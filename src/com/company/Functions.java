@@ -15,7 +15,7 @@ public class Functions {
             if(con != null) System.out.println("Connection made!");
             else System.out.println("Connection failed!");
         }catch (Exception e){
-            System.out.println("Exception Found!");
+            System.out.println(e);
         }
          return con;
     }
