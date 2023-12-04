@@ -11,3 +11,14 @@ CREATE TABLE Genres (
     GenreID SERIAL PRIMARY KEY,
     GenreName VARCHAR(255)
 );
+
+CREATE TABLE Books (
+    BookID SERIAL PRIMARY KEY,
+    Title VARCHAR(255),
+    ISBN VARCHAR(13),
+    AuthorID INT,
+    StockQuantity INT,
+    Price DECIMAL(10, 2),
+    PublicationDate DATE,
+    FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
+);
