@@ -22,3 +22,12 @@ CREATE TABLE Books (
     PublicationDate DATE,
     FOREIGN KEY (AuthorID) REFERENCES Authors(AuthorID)
 );
+
+CREATE TABLE Orders (
+    OrderID SERIAL PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    TotalAmount DECIMAL(10, 2),
+    Status VARCHAR(20),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
