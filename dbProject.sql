@@ -31,3 +31,12 @@ CREATE TABLE Orders (
     Status VARCHAR(20),
     FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 );
+
+CREATE TABLE BooksGenres (
+    BookID INT,
+    GenreID INT,
+    PRIMARY KEY (BookID, GenreID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID),
+    FOREIGN KEY (GenreID) REFERENCES Genres(GenreID)
+);
+
