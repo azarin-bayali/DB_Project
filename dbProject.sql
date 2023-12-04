@@ -1,7 +1,13 @@
-CREATE TABLE Authors (
-    AuthorID SERIAL PRIMARY KEY,
-    AuthorName VARCHAR(255),
-    BirthDate DATE,
-    Nationality VARCHAR(50),
-    Biography TEXT
+CREATE TABLE Customers (
+    CustomerID SERIAL PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Email VARCHAR(255),
+    PhoneNumber VARCHAR(15),
+    Address TEXT
+);
+
+CREATE TABLE Genres (
+    GenreID SERIAL PRIMARY KEY,
+    GenreName VARCHAR(255)
 );
