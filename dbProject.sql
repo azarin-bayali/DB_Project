@@ -40,3 +40,11 @@ CREATE TABLE BooksGenres (
     FOREIGN KEY (GenreID) REFERENCES Genres(GenreID)
 );
 
+CREATE TABLE Orders_Books (
+    OrderID INT,
+    BookID INT,
+    PRIMARY KEY (OrderID, BookID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (BookID) REFERENCES Books(BookID)
+);
+
