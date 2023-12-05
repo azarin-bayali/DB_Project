@@ -48,3 +48,27 @@ CREATE TABLE Orders_Books (
     FOREIGN KEY (BookID) REFERENCES Books(BookID)
 );
 
+INSERT INTO Authors (AuthorName) VALUES ('J.K. Rowling');
+
+INSERT INTO Books (Title, ISBN, AuthorID, StockQuantity, Price, PublicationDate)
+VALUES 
+  ('Harry Potter and the Sorcerer''s Stone', '9780439554930', 1, 100, 24.99, '1997-06-26');
+
+SELECT * FROM Books WHERE BookID = '1';
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
+																								 
