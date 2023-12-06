@@ -20,16 +20,12 @@ public class Main {
 
         //Updating details of a book
         //db.updateBookDetails(16, "Harry Potter and the Sorcerer's Stone", 150, 29.99);
+
         //Removing an existing book
         //db.removeBook(20);
 
 
-        // Call Transaction
 
-        // Call Metadata Access
-
-
-        //db.selectBook(1);
 
 
 

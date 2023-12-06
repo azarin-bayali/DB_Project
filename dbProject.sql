@@ -1,3 +1,11 @@
+CREATE TABLE Authors (
+    AuthorID SERIAL PRIMARY KEY,
+    AuthorName VARCHAR(255),
+    BirthDate DATE,
+    Nationality VARCHAR(255),
+    Biography TEXT
+);
+
 CREATE TABLE Customers (
     CustomerID SERIAL PRIMARY KEY,
     FirstName VARCHAR(50),
