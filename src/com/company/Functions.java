@@ -85,13 +85,46 @@ public class Functions {
 //        }
 //    }
 
+    // 3. Updating details of a book
+    public void updateBookDetails(int bookID, String newTitle, int newStockQuantity, double newPrice) {
+        try {
+            Connection con = connection_toDB("dbProject", "postgres", "12073");
+            String sql = "UPDATE Books SET Title = ?, StockQuantity = ?, Price = ? WHERE BookID = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setString(1, newTitle);
+                pstmt.setInt(2, newStockQuantity);
+                pstmt.setDouble(3, newPrice);
+                pstmt.setInt(4, bookID);
+                pstmt.executeUpdate();
+                System.out.println("Book details updated successfully!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error updating book details: " + e.getMessage());
+        }
+    }
 
+    // 4. Removing an existing book
+    public void removeBook(int bookID) {
+        try {
+            Connection con = connection_toDB("dbProject", "postgres", "12073");
+            String sql = "DELETE FROM Books WHERE BookID = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setInt(1, bookID);
+                pstmt.executeUpdate();
+                System.out.println("Book removed successfully!");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error removing book: " + e.getMessage());
+        }
+    }
 }
 
 
 
-//Transaction Operations
 
+
+//Transaction Operations
+//I could not understand Transaction Operations, so I did not implemneted it. 
 
 
 //Metadata Access
