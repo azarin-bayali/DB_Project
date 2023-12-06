@@ -11,7 +11,7 @@ public class Main {
         db.connection_toDB(name, username, password);
 
         // Call CRUD operations
-        db.insertData(db.connection_toDB(name, username, password), "Books", new String[]{"BookID", "Title", "ISBN", "AuthorID", "StockQuantity", "Price", "PublicationDate"}, new String[]{"1", "Harry Potter and the Sorcerer's Stone", "9780439554930", "1", "100", "24.99", "1997-06-26"});
+        db.insertBook("The Great Gatsby", "9780142437266", 1, 100, 25.99, "2022-01-01");
 
         // Call Transaction
 

@@ -22,28 +22,26 @@ public class Functions {
          return con;
     }
     //CRUD Operations
-    public void insertData(Connection connection, String tableName, String[] columns, String[] values) {
-
-        String[] formattedValues = Arrays.stream(values)
-                .map(value -> "'" + value + "'")
-                .toArray(String[]::new);
-
-        String insertCommand = "INSERT INTO " + tableName + " (" + String.join(", ", columns) + ") VALUES (" + String.join(", ", formattedValues) + ")";
-        System.out.println("INSERT command: " + insertCommand);
-
-        try (PreparedStatement statement = connection.prepareStatement(insertCommand)) {
-            int affectedRows = statement.executeUpdate();
-            if (affectedRows > 0) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Failed to insert data.");
+    // 1. Inserting new records
+    public void insertBook(String title, String isbn, int authorID, int stockQuantity, double price, String publicationDate) {
+        try {
+            Connection con = connection_toDB("dbProject", "postgres", "12073");
+            String sql = "INSERT INTO Books (Title, ISBN, AuthorID, StockQuantity, Price, PublicationDate) VALUES (?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setString(1, title);
+                pstmt.setString(2, isbn);
+                pstmt.setInt(3, authorID);
+                pstmt.setInt(4, stockQuantity);
+                pstmt.setDouble(5, price);
+                pstmt.setDate(6, java.sql.Date.valueOf(publicationDate));
+                pstmt.executeUpdate();
+                System.out.println("Book inserted successfully!");
             }
         } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-
+            System.out.println("Error inserting book: " + e.getMessage());
         }
-
     }
+
 
 
 //Transaction Operations
