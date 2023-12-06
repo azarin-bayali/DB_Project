@@ -40,52 +40,53 @@ public class Functions {
     }
 
     // 2. Retrieving all book information, including authors and associated orders
-    public void getAllBookInfo() {
-            try {
-                Connection con = connection_toDB("dbProject", "postgres", "12073");
-                String sql = "SELECT * FROM Books " +
-                        "JOIN Authors ON Books.AuthorID = Authors.AuthorID " +
-                        "LEFT JOIN Orders_Books ON BookGeneres.BookID = Orders_Books.BookID " +
-                        "LEFT JOIN Orders ON Orders_Books.OrderID = Orders.OrderID";
-                try (Statement stmt = con.createStatement();
-                     ResultSet rs = stmt.executeQuery(sql)) {
-                    while (rs.next()) {
-                        int bookID = rs.getInt("BookGeneres.BookID"); // Corrected
-                        String title = rs.getString("Books.Title");
-                        String isbn = rs.getString("Books.ISBN");
-                        int authorID = rs.getInt("Books.AuthorID"); // Corrected
-                        String authorName = rs.getString("Authors.AuthorName");
-                        int stockQuantity = rs.getInt("Books.StockQuantity");
-                        double price = rs.getDouble("Books.Price");
-                        java.sql.Date publicationDate = rs.getDate("Books.PublicationDate");
-                        int orderID = rs.getInt("Orders.OrderID");
-                        java.sql.Date orderDate = rs.getDate("Orders.OrderDate");
-                        double totalAmount = rs.getDouble("Orders.TotalAmount");
-                        String status = rs.getString("Orders.Status");
+    //There is an error here and since my pgadmin does not work I cannot resolve it
+//    public void getAllBookInfo() {
+//            try {
+//                Connection con = connection_toDB("dbProject", "postgres", "12073");
+//                String sql = "SELECT * FROM Books " +
+//                        "JOIN Authors ON Books.AuthorID = Authors.AuthorID " +
+//                        "LEFT JOIN Orders_Books ON Books.BookID = Orders_Books.BookID " +
+//                        "LEFT JOIN Orders ON Orders_Books.OrderID = Orders.OrderID";
+//                try (Statement stmt = con.createStatement();
+//                     ResultSet rs = stmt.executeQuery(sql)) {
+//                    while (rs.next()) {
+//                        int bookID = rs.getInt("Books.BookID"); // Corrected
+//                        String title = rs.getString("Books.Title");
+//                        String isbn = rs.getString("Books.ISBN");
+//                        int authorID = rs.getInt("Books.AuthorID"); // Corrected
+//                        String authorName = rs.getString("Authors.AuthorName");
+//                        int stockQuantity = rs.getInt("Books.StockQuantity");
+//                        double price = rs.getDouble("Books.Price");
+//                        java.sql.Date publicationDate = rs.getDate("Books.PublicationDate");
+//                        int orderID = rs.getInt("Orders.OrderID");
+//                        java.sql.Date orderDate = rs.getDate("Orders.OrderDate");
+//                        double totalAmount = rs.getDouble("Orders.TotalAmount");
+//                        String status = rs.getString("Orders.Status");
+//
+//                        System.out.println("BookID: " + bookID);
+//                        System.out.println("Title: " + title);
+//                        System.out.println("ISBN: " + isbn);
+//                        System.out.println("AuthorID: " + authorID);
+//                        System.out.println("AuthorName: " + authorName);
+//                        System.out.println("StockQuantity: " + stockQuantity);
+//                        System.out.println("Price: " + price);
+//                        System.out.println("PublicationDate: " + publicationDate);
+//                        System.out.println("OrderID: " + orderID);
+//                        System.out.println("OrderDate: " + orderDate);
+//                        System.out.println("TotalAmount: " + totalAmount);
+//                        System.out.println("Status: " + status);
+//                        System.out.println();
+//                    }
+//                }
+//            } catch (SQLException e) {
+//                System.out.println("Error retrieving book information: " + e.getMessage());
+//            }
+//        }
+//    }
 
-                        System.out.println("BookID: " + bookID);
-                        System.out.println("Title: " + title);
-                        System.out.println("ISBN: " + isbn);
-                        System.out.println("AuthorID: " + authorID);
-                        System.out.println("AuthorName: " + authorName);
-                        System.out.println("StockQuantity: " + stockQuantity);
-                        System.out.println("Price: " + price);
-                        System.out.println("PublicationDate: " + publicationDate);
-                        System.out.println("OrderID: " + orderID);
-                        System.out.println("OrderDate: " + orderDate);
-                        System.out.println("TotalAmount: " + totalAmount);
-                        System.out.println("Status: " + status);
-                        System.out.println();
-                    }
-                }
-            } catch (SQLException e) {
-                System.out.println("Error retrieving book information: " + e.getMessage());
-            }
-        }
-    }
 
-
-
+}
 
 
 
