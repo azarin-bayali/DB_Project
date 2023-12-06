@@ -1,9 +1,6 @@
 package com.company;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Arrays;
 
 //Connecting to Database
@@ -44,11 +41,48 @@ public class Functions {
 
 
 
+
 //Transaction Operations
 
 
 
 //Metadata Access
+
+
+    //Selecting books
+    public void selectBook(int bookID) {
+        try {
+            Connection con = connection_toDB("dbProject", "postgres", "12073");
+            String sql = "SELECT * FROM Books WHERE BookID = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+                pstmt.setInt(1, bookID);
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        // Process and print book details
+                        int retrievedBookID = rs.getInt("BookID");
+                        String title = rs.getString("Title");
+                        String isbn = rs.getString("ISBN");
+                        int authorID = rs.getInt("AuthorID");
+                        int stockQuantity = rs.getInt("StockQuantity");
+                        double price = rs.getDouble("Price");
+                        String publicationDate = rs.getString("PublicationDate");
+
+                        System.out.println("BookID: " + retrievedBookID);
+                        System.out.println("Title: " + title);
+                        System.out.println("ISBN: " + isbn);
+                        System.out.println("AuthorID: " + authorID);
+                        System.out.println("StockQuantity: " + stockQuantity);
+                        System.out.println("Price: " + price);
+                        System.out.println("PublicationDate: " + publicationDate);
+                    } else {
+                        System.out.println("Book with ID " + bookID + " not found.");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error selecting book: " + e.getMessage());
+        }
+    }
 }
 
 
